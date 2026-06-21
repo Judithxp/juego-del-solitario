@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Solitario Realista</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 class="titulo-juego">Solitario</h1>
+    
+    <div id="tablero">
+        <div class="zona-superior">
+            <div class="mazo-y-descarte">
+                <div id="mazo-origen" class="pila"></div>
+                <div id="descarte" class="pila"></div>
+            </div>
+            
+            <div class="fundaciones">
+                <div id="pila-♥" class="pila">♥</div>
+                <div id="pila-♦" class="pila">♦</div>
+                <div id="pila-♣" class="pila">♣</div>
+                <div id="pila-♠" class="pila">♠</div>
+            </div>
+        </div>
+
+        <div id="columnas">
+            <div id="col-0" class="columna"></div>
+            <div id="col-1" class="columna"></div>
+            <div id="col-2" class="columna"></div>
+            <div id="col-3" class="columna"></div>
+            <div id="col-4" class="columna"></div>
+            <div id="col-5" class="columna"></div>
+            <div id="col-6" class="columna"></div>
+        </div>
+    </div>
+
+    <button id="btn-reiniciar" class="boton-juego">Nueva Partida</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

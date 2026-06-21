@@ -1,0 +1,138 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1a5e32 radial-gradient(circle, #22713e 0%, #0d3a1f 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    user-select: none;
+}
+
+.titulo-juego {
+    color: white;
+    font-family: 'Georgia', serif;
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+#tablero {
+    width: 100%;
+    max-width: 800px;
+}
+
+.zona-superior {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.mazo-y-descarte, .fundaciones {
+    display: flex;
+    gap: 8px;
+}
+
+.pila {
+    width: 12.5vw;
+    max-width: 90px;
+    aspect-ratio: 2.5 / 3.5;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.2);
+    position: relative;
+    box-sizing: border-box;
+}
+
+#columnas {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.columna {
+    width: 12.5vw;
+    max-width: 90px;
+    min-height: 450px;
+    position: relative;
+}
+
+/* Estilo de la Carta */
+.carta {
+    width: 100%;
+    aspect-ratio: 2.5 / 3.5;
+    background: white;
+    border-radius: 4px;
+    position: absolute;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    /* Transición suave para el efecto de levante */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.1s;
+    will-change: transform;
+}
+
+/* EFECTO DE LEVITACIÓN AL PASAR EL RATÓN */
+.carta:not(.boca-abajo):hover {
+    transform: translateY(-12px) scale(1.02); /* Se eleva y crece un pelín */
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);   /* Sombra mucho más profunda */
+    z-index: 999 !important;                   /* Se pone por encima de todas */
+}
+
+.boca-abajo {
+    background: #1a5fbc linear-gradient(135deg, #1a5fbc 0%, #0f3d80 100%) !important;
+    border: 2px solid white !important;
+    box-shadow: 2px 2px 0px #0a2e63;
+}
+
+.pila.vacia {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 2px dashed rgba(255, 255, 255, 0.1) !important;
+}
+
+.carta.seleccionada {
+    outline: 3px solid #ffeb3b;
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px #ffeb3b;
+    z-index: 1000 !important;
+}
+
+.rojo { color: #d40000; }
+.negro { color: #000000; }
+
+.carta .valor-superior { font-weight: bold; font-size: 0.9rem; line-height: 1; }
+.carta .palo-central { font-size: 1.8rem; text-align: center; flex-grow: 1; display: flex; align-items: center; justify-content: center; }
+
+.boton-juego {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    background: white;
+    font-weight: bold;
+    color: #0d3a1f;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    z-index: 2000;
+}
+
+@media (max-width: 600px) {
+    .carta .valor-superior { font-size: 0.7rem; }
+    .pila { font-size: 1.2rem; }
+    /* Reducimos el levante en móvil para que no sea molesto al tocar */
+    .carta:not(.boca-abajo):hover { transform: translateY(-5px); }
+}
